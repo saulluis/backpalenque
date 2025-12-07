@@ -11,16 +11,25 @@ import { InfoHomeModule } from './info-home/info-home.module';
 import { ApartadosModule } from './apartados/apartados.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: 'mariadb',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '',
-    database: 'palenque',
-    autoLoadEntities: true,
-    synchronize: true,
-  }), UsuarioModule, AdministradorModule, CategoriaModule, BebidasModule, DiaCataModule, InfoHomeModule, ApartadosModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql', // Cambiamos mariadb por mysql para Railway
+      host: 'shortline.proxy.rlwy.net',
+      port: 26980,
+      username: 'root',
+      password: 'anxDidpmBeTKcqIBxOrgETqRfiXvrMvC', // <--- ¡OJO AQUÍ!
+      database: 'railway', // En Railway la base por defecto se llama 'railway'
+      autoLoadEntities: true,
+      synchronize: true, // Esto crea las tablas automáticamente si no existen
+    }), 
+    UsuarioModule, 
+    AdministradorModule, 
+    CategoriaModule, 
+    BebidasModule, 
+    DiaCataModule, 
+    InfoHomeModule, 
+    ApartadosModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
